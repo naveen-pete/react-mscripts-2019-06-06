@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PostDetail = (props) => {
-  console.log('props:', props);
   return (
     <div className="card bg-light mb-3">
       <h5 className="card-header">{props.post.title}</h5>

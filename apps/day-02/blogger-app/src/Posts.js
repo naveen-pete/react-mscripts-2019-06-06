@@ -56,43 +56,45 @@ class Posts extends React.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
-    console.log('this:', this);
-    console.log('Form submitted:', this.state.post);
-    // this.setState({ posts: [...this.state.posts, this.state.post] });
 
     this.setState((prevState) => {
-      const id = prevState.posts.length === 0 ? 1 : prevState.posts[prevState.posts.length - 1].id + 1;
-      const post = { ...this.state.post, id: id };
+      const id = this.generateId(prevState.posts);
+      const newPost = { ...this.state.post, id: id };
 
-      return { posts: [post, ...prevState.posts] };
-
+      return {
+        posts: [...prevState.posts, newPost],
+        post: {
+          id: 0,
+          title: '',
+          body: '',
+          author: '',
+          category: ''
+        }
+      };
     });
   }
 
+  generateId(posts) {
+    const newId = posts.length === 0 ? 1 : posts[posts.length - 1].id + 1;
+    return newId;
+  }
+
   handleTitleChange = (e) => {
-    console.log('title:', e.target.value);
-    // this.state.post.title = e.target.value;
     const post = this.state.post;
     this.setState({ post: { ...post, title: e.target.value } });
   }
 
   handleBodyChange = (e) => {
-    console.log('body:', e.target.value);
-    // this.state.post.title = e.target.value;
     const post = this.state.post;
     this.setState({ post: { ...post, body: e.target.value } });
   }
 
   handleAuthorChange = (e) => {
-    console.log('author:', e.target.value);
-    // this.state.post.title = e.target.value;
     const post = this.state.post;
     this.setState({ post: { ...post, author: e.target.value } });
   }
 
   handleCategoryChange = (e) => {
-    console.log('category:', e.target.value);
-    // this.state.post.title = e.target.value;
     const post = this.state.post;
     this.setState({ post: { ...post, category: e.target.value } });
   }
