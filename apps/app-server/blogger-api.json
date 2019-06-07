@@ -1,53 +1,39 @@
 {
   "posts": [
     {
-      "id": "2",
+      "id": 1,
       "title": "Redux Principles",
       "body": "Redux can be described in three fundamental principles: (a) Single source of truth (b) State is read-only (c) Changes are made with pure functions",
       "author": "facebook",
       "category": "redux"
     },
     {
-      "id": "3",
+      "id": 2,
       "title": "Angular",
       "body": "One framework. Mobile & desktop.",
       "author": "google",
       "category": "angular"
     },
     {
-      "id": "4",
+      "id": 3,
       "title": "Learn Redux in 10 minutes!",
       "body": "Just kidding. It takes more than 10 minutes to learn technology.",
       "author": "thingone",
       "category": "redux"
     },
     {
-      "id": "5",
-      "title": "New post!",
-      "body": "demo",
-      "author": "thingone",
+      "id": 4,
+      "title": "new post",
+      "body": "new post body",
+      "author": "naveen",
+      "category": "redux"
+    },
+    {
+      "id": 5,
+      "title": "Intro to React",
+      "body": "This post provides introduction to React",
+      "author": "abc",
       "category": "react"
-    },
-    {
-      "title": "test post ",
-      "body": "test post body",
-      "author": "abc",
-      "category": "es6",
-      "id": "SeR5swn"
-    },
-    {
-      "title": "p1",
-      "body": "p1 body",
-      "author": "abc",
-      "category": "java",
-      "id": "WIRqMku"
-    },
-    {
-      "title": "p100",
-      "body": "p100 body",
-      "author": "aaa",
-      "category": "react",
-      "id": "zc_7k9m"
     }
   ],
   "categories": [
@@ -70,6 +56,16 @@
     {
       "name": "Java",
       "code": "java"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Krish"
+    },
+    {
+      "id": 2,
+      "name": "Ram"
     }
   ]
 }

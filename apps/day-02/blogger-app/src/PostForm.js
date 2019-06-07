@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class PostForm extends Component {
   state = {
-    id: 0,
     title: '',
     body: '',
     author: '',
@@ -19,7 +18,6 @@ class PostForm extends Component {
     event.preventDefault();
     this.props.onNewPost(this.state);
     this.setState({
-      id: 0,
       title: '',
       body: '',
       author: '',

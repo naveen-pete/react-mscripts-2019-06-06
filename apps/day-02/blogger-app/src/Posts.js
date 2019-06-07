@@ -2,44 +2,40 @@ import React from 'react';
 
 import PostForm from './PostForm';
 import PostDetail from './PostDetail';
+import { getPosts, addPost } from './api/posts';
 
 class Posts extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      posts: [
-        {
-          id: 1,
-          title: 'Introduction to React',
-          body: 'This post provides an introduction to React',
-          author: 'Hari',
-          category: 'react'
-        },
-        {
-          id: 2,
-          title: 'Advanced React',
-          body: 'This post discusses about advanced features of React',
-          author: 'Ram',
-          category: 'react'
-        },
-        {
-          id: 3,
-          title: 'Introduction to Redux',
-          body: 'This post provides an introduction to Redux',
-          author: 'Shiv',
-          category: 'redux'
-        }
-      ]
+      posts: []
     };
 
   }
 
-  handleNewPost = (newPost) => {
-    this.setState((prevState) => {
-      newPost.id = this.generateId(prevState.posts);
-      return { posts: [...prevState.posts, newPost] };
-    });
+  componentDidMount() {
+    getPosts()
+      .then((posts) => {
+        this.setState({ posts: posts });
+      })
+      .catch((error) => {
+        console.log('Get posts failed!');
+        console.log('Error:', error);
+      });
+  }
+
+  handleNewPost = (post) => {
+    addPost(post)
+      .then((newPost) => {
+        this.setState((prevState) => {
+          return { posts: [...prevState.posts, newPost] }
+        });
+      })
+      .catch((error) => {
+        console.log('Add post failed!');
+        console.log('Error:', error);
+      });
   }
 
   generateId(posts) {
@@ -48,10 +44,17 @@ class Posts extends React.Component {
   }
 
   renderPosts() {
+    const filteredPosts = this.props.selectedCategory.code === 'all'
+      ? this.state.posts
+      : this.state.posts.filter((post) => {
+        return post.category === this.props.selectedCategory.code
+      });
+
     return (
       <div className="col-sm-7">
         <h4>Posts</h4>
-        {this.state.posts.map((post) => {
+        <h5>Category: {this.props.selectedCategory.name}</h5>
+        {filteredPosts.map((post) => {
           return <PostDetail key={post.id} post={post} />
         })}
       </div>
