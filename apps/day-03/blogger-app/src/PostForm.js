@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import { addPost } from './api/posts';
+import { getCategories } from './actions';
 
 class PostForm extends Component {
   state = {
@@ -7,6 +10,10 @@ class PostForm extends Component {
     body: '',
     author: '',
     category: ''
+  }
+
+  componentDidMount() {
+    this.props.getCategories();
   }
 
   handleChange = (e) => {
@@ -79,4 +86,16 @@ class PostForm extends Component {
   }
 }
 
-export default PostForm;
+// const mapStateToProps = (state) => {
+//   return {
+//     categories: state.categories
+//   };
+// }
+
+// const mapStateToProps = state => ({
+//   categories: state.categories
+// });
+
+const mapStateToProps = ({ categories }) => ({ categories });
+
+export default connect(mapStateToProps, { getCategories })(PostForm);

@@ -2,10 +2,6 @@ import { combineReducers } from 'redux';
 
 const defaultCategory = { code: 'all', name: 'All' };
 const defaultCategories = [];
-const categories = [
-  { code: 'react', name: 'React' },
-  { code: 'redux', name: 'Redux' }
-];
 
 // action
 // {
@@ -23,15 +19,27 @@ const selectedCategoryReducer = (state = defaultCategory, action) => {
 
 const categoriesReducer = (state = defaultCategories, action) => {
   if (action.type === 'GET_CATEGORIES') {
-    // return action.payload;
-    return categories;
+    return action.payload;
   }
 
   return state;
 };
 
+const postsReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'GET_POSTS':
+      return action.payload;
+
+    case 'CREATE_POST':
+      return [...state, action.payload];
+
+    default:
+      return state;
+  }
+};
+
 const appReducers = combineReducers({
-  // posts: [],
+  posts: postsReducer,
   categories: categoriesReducer,
   selectedCategory: selectedCategoryReducer
 });

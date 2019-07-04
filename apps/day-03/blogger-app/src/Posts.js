@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import PostDetail from './PostDetail';
-import { getPosts, addPost, deletePost } from './api/posts';
+import { addPost, deletePost } from './api/posts';
+import { getPosts } from './actions';
 
 class Posts extends React.Component {
   constructor() {
@@ -15,14 +16,7 @@ class Posts extends React.Component {
   }
 
   componentDidMount() {
-    getPosts()
-      .then((posts) => {
-        this.setState({ posts: posts });
-      })
-      .catch((error) => {
-        console.log('Get posts failed!');
-        console.log('Error:', error);
-      });
+    this.props.getPosts();
   }
 
   handleNewPost = (post) => {
@@ -61,12 +55,17 @@ class Posts extends React.Component {
   }
 
   renderPosts() {
+    // const filteredPosts = this.props.selectedCategory.code === 'all'
+    //   ? this.state.posts
+    //   : this.state.posts.filter((post) => {
+    //     return post.category === this.props.selectedCategory.code
+    //   });
+
     const filteredPosts = this.props.selectedCategory.code === 'all'
-      ? this.state.posts
-      : this.state.posts.filter((post) => {
+      ? this.props.posts
+      : this.props.posts.filter((post) => {
         return post.category === this.props.selectedCategory.code
       });
-
     return (
       <div className="col-sm-9">
         <h4>Posts</h4>
@@ -90,8 +89,9 @@ class Posts extends React.Component {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
+    posts: state.posts,
     selectedCategory: state.selectedCategory
   };
 }
 
-export default connect(mapStateToProps)(Posts);
+export default connect(mapStateToProps, { getPosts })(Posts);

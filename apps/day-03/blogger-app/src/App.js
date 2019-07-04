@@ -39,19 +39,18 @@ class App extends Component {
           <Nav />
 
           <Route path="/posts/form" render={(props) => {
-            return <PostForm {...props} categories={this.state.categories} />
+            return (
+              <PostForm
+                {...props}
+              // categories={this.state.categories} 
+              />
+            );
           }} />
           <Route path="/posts" exact render={() => {
             return (
               <div className="row">
-                <Categories
-                // categories={this.state.categories}
-                // onCategorySelect={this.handleCategorySelect}
-                />
-                <Posts
-                  categories={this.state.categories}
-                // selectedCategory={this.state.selectedCategory}
-                />
+                <Categories />
+                <Posts />
               </div>
             );
           }} />
