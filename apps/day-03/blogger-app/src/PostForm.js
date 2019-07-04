@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { addPost } from './api/posts';
 
 class PostForm extends Component {
   state = {
@@ -16,7 +17,17 @@ class PostForm extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    this.props.onNewPost(this.state);
+
+    addPost(this.state)
+      .then((newPost) => {
+        console.log('Add post successful.');
+        this.props.history.push('/posts');
+      })
+      .catch((error) => {
+        console.log('Add post failed!');
+        console.log('Error:', error);
+      });
+
     this.setState({
       title: '',
       body: '',
@@ -33,7 +44,7 @@ class PostForm extends Component {
 
   render() {
     return (
-      <div className="col-sm-5">
+      <div className="col-sm-12">
         <h4>Post Form</h4>
         <div className="card bg-light">
           <div className="card-body">

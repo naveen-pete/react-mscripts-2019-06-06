@@ -8,7 +8,7 @@ class Categories extends Component {
     ];
 
     return (
-      <div className="col-sm-2">
+      <div className="col-sm-3">
         <h4>Categories</h4>
         <ul className="list-group">
           {categories.map((category) => {

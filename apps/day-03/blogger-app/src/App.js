@@ -38,8 +38,8 @@ class App extends Component {
           <Header />
           <Nav />
 
-          <Route path="/posts/form" render={() => {
-            return <PostForm categories={this.state.categories} />
+          <Route path="/posts/form" render={(props) => {
+            return <PostForm {...props} categories={this.state.categories} />
           }} />
           <Route path="/posts" exact render={() => {
             return (

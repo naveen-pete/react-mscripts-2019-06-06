@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Home = (props) => {
-  console.log(props);
   return (
     <div>
       <h2>Blogger App Home</h2>

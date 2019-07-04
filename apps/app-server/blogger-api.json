@@ -22,18 +22,25 @@
       "category": "redux"
     },
     {
-      "id": 4,
-      "title": "new post",
-      "body": "new post body",
-      "author": "naveen",
-      "category": "redux"
+      "title": "React Intro",
+      "body": "Provides an overview of React",
+      "author": "abc",
+      "category": "react",
+      "id": 4
     },
     {
-      "id": 5,
-      "title": "Intro to React",
-      "body": "This post provides introduction to React",
+      "title": "Redux Overview",
+      "body": "Provides overview of Redux",
       "author": "abc",
-      "category": "react"
+      "category": "redux",
+      "id": 5
+    },
+    {
+      "title": "About Angular",
+      "body": "Overview of Angular",
+      "author": "abc",
+      "category": "angular",
+      "id": 6
     }
   ],
   "categories": [

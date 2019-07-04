@@ -1,6 +1,5 @@
 import React from 'react';
 
-import PostForm from './PostForm';
 import PostDetail from './PostDetail';
 import { getPosts, addPost, deletePost } from './api/posts';
 
@@ -68,7 +67,7 @@ class Posts extends React.Component {
       });
 
     return (
-      <div className="col-sm-7">
+      <div className="col-sm-9">
         <h4>Posts</h4>
         <h5>Category: {this.props.selectedCategory.name}</h5>
         {filteredPosts.map((post) => {
@@ -82,7 +81,6 @@ class Posts extends React.Component {
     return (
       <React.Fragment>
         {this.renderPosts()}
-        {/* <PostForm categories={this.props.categories} onNewPost={this.handleNewPost} /> */}
       </React.Fragment>
     );
   }
