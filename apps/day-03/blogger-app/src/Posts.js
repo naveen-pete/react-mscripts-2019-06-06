@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import PostDetail from './PostDetail';
 import { getPosts, addPost, deletePost } from './api/posts';
@@ -86,4 +87,11 @@ class Posts extends React.Component {
   }
 }
 
-export default Posts;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    selectedCategory: state.selectedCategory
+  };
+}
+
+export default connect(mapStateToProps)(Posts);

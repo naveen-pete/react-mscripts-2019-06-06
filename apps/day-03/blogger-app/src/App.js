@@ -45,12 +45,12 @@ class App extends Component {
             return (
               <div className="row">
                 <Categories
-                  categories={this.state.categories}
-                  onCategorySelect={this.handleCategorySelect}
+                // categories={this.state.categories}
+                // onCategorySelect={this.handleCategorySelect}
                 />
                 <Posts
                   categories={this.state.categories}
-                  selectedCategory={this.state.selectedCategory}
+                // selectedCategory={this.state.selectedCategory}
                 />
               </div>
             );

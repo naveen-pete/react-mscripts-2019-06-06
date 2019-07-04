@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { selectCategory, getCategories } from './actions';
 
 class Categories extends Component {
+  componentDidMount() {
+    this.props.getCategories();
+  }
+
   render() {
     const categories = [
       { code: 'all', name: 'All' },
@@ -12,7 +19,7 @@ class Categories extends Component {
         <h4>Categories</h4>
         <ul className="list-group">
           {categories.map((category) => {
-            return <li onClick={() => { this.props.onCategorySelect(category); }} key={category.code} className="list-group-item list-group-item-action">
+            return <li onClick={() => { this.props.selectCategory(category); }} key={category.code} className="list-group-item list-group-item-action">
               {category.name}
             </li>
           })}
@@ -22,4 +29,10 @@ class Categories extends Component {
   }
 }
 
-export default Categories;
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories
+  };
+};
+
+export default connect(mapStateToProps, { selectCategory, getCategories })(Categories);
